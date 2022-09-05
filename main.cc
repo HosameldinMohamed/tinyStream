@@ -26,22 +26,29 @@ int main(int argc, char const *argv[])
     // vector of cameras
     std::vector<std::shared_ptr<BaseCamera>> camera_list;
 
+    int port = 8080;
     // if no args are passed, use default usb camera
-    if (argc < 2)
+    if (argc < 2 || argc > 3)
     {
         camera_list.push_back(std::make_shared<BaseCamera>(DEFAULT_CAMERA, false));
     }
-    else
+    else if(argc == 2)
     {
-        // add camera for each index passed in command line argument
-        for (int i = 1; i < argc; i++)
-        {
-            camera_list.push_back(std::make_shared<BaseCamera>(atoi(argv[i]), false));
-        }
+//         // add camera for each index passed in command line argument
+//         for (int i = 1; i < argc; i++)
+//         {
+//             camera_list.push_back(std::make_shared<BaseCamera>(atoi(argv[i]), false));
+//         }
+        camera_list.push_back(std::make_shared<BaseCamera>(atoi(argv[1]), false));
+    }
+    else if(argc == 3)
+    {
+        camera_list.push_back(std::make_shared<BaseCamera>(atoi(argv[1]), false));
+        port = atoi(argv[2]);
     }
 
     // create server for each camera and bind it to port 8080,8081 ... so on
-    int port = 8080;
+    //int port = 8080;
     for (auto &camera : camera_list)
     {
         server_list.push_back(std::make_shared<iit::StreamServer>(port++, camera));
