@@ -109,6 +109,7 @@ public:
             catch (const std::exception &e)
             {
                 std::cout << e.what() << '\n';
+                cv::imencode(".jpg", _no_camera, jpg, params);
             }
         }
         else
