@@ -13,7 +13,7 @@ class ICamera
 {
 public:
     typedef std::shared_ptr<ICamera> Ptr;
-    virtual std::vector<unsigned char> get_frame() = 0;
+    virtual std::vector<unsigned char> get_frame(std::vector<unsigned char> oldFrame) = 0;
 
 private:
 };

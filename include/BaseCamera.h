@@ -52,7 +52,7 @@ public:
         _cap.release();
     }
 
-    virtual std::vector<uchar> get_frame()
+    virtual std::vector<uchar> get_frame(std::vector<uchar> oldFrame)
     {
         try
         {
@@ -109,7 +109,7 @@ public:
             catch (const std::exception &e)
             {
                 std::cout << e.what() << '\n';
-                cv::imencode(".jpg", _no_camera, jpg, params);
+                cv::imencode(".jpg", oldFrame, jpg, params);
             }
         }
         else
