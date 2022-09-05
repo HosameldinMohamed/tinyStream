@@ -101,7 +101,7 @@ public:
         // encode grabed frame to jpg
         if (_cam_available)
         {
-            std::cout << "-------------> Frame: " << _frame << std::endl;
+            std::cout << "-------------> Frame: " << _frame.row(0) << std::endl;
             cv::imencode(".jpg", _frame, jpg, params);
         }
         else
