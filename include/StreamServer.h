@@ -162,7 +162,7 @@ namespace iit
                 std::string frame_header;
 
                 // grab jpeg image from camera
-                jpg = _camera->get_frame(jpg);
+                jpg = _camera->get_frame();
 
                 // update jpg size in header for individual frame
                 frame_header = "--frame\r\nContent-Type: image/jpeg\r\n"
@@ -197,7 +197,7 @@ namespace iit
                         }
                     }
                 }
-                usleep(100000); // 10 Hz loop
+                usleep(40000); // 50 Hz loop
             }
 
             // close all sockets
